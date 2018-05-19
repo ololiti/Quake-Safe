@@ -9,8 +9,9 @@ package expohacksproject;
  * @author Aditi
  */
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Neighborhood {
+public class Neighborhood implements Serializable{
     private ArrayList<Person> people;
     private String name;
     public String[] plan = {"[add clear spaces in the neighborhood here]",
