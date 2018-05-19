@@ -28,9 +28,13 @@ public class Person {
     int generators;
     int flashlights;
     int clothes;
-    ArrayList<String> other = new ArrayList<String>(5);
+    String phone;
+    String other = new String();
     public Person(String name){
         this.name = name;
+    }
+    public void addPhone(String number){
+        phone = number;
     }
     public boolean equals(Object other){
         if (other.getClass()!=this.getClass()) return false;
