@@ -10,7 +10,13 @@ package expohacksproject;
  */
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.*;
 public class ExpoHacksProject {
 
     /**
@@ -21,16 +27,28 @@ public class ExpoHacksProject {
     static Person myName;
     static Neighborhood myNeighborhood;
     public static void main(String[] args) {
+        ObjectOutputStream output = null;
+        ObjectInputStream input = null;
         try{
-            neighborhoods.add(new Neighborhood("Ardenwood"));
-            neighborhoods.get(0).addPerson(new Person("Bob"));
-            neighborhoods.add(new Neighborhood("Twenty"));
-            neighborhoods.add(new Neighborhood("Dublin"));
-            neighborhoods.get(0).addPerson(new Person("John"));
-        }catch(NameTakenException e){}
+            input = new ObjectInputStream(new FileInputStream("accounts.bin"));
+            neighborhoods = (ArrayList<Neighborhood>)input.readObject();
+        } catch (FileNotFoundException e){
+            System.out.println("Input file not found.");
+        } catch (IOException e){
+            System.out.println("Error in retrieving input file.");
+        } catch (ClassNotFoundException e){
+            System.out.println("Class not found.");
+        }
         FindAccount f = new FindAccount();
         f.setVisible(true);
-        
+        try{
+            output = new ObjectOutputStream(new FileOutputStream(new File("accounts.bin")));
+            output.writeObject(neighborhoods);
+            output.close();
+        } catch (IOException e){
+            System.out.println(e.getMessage());
+            System.out.println("Output file not found.");
+        }
     }
     public static void listNeighborhoods(){
         for(Neighborhood n: neighborhoods) System.out.println(n);
