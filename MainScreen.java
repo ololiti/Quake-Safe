@@ -20,7 +20,15 @@ public class MainScreen extends JFrame implements ActionListener{
     public static final Font PLAN = new Font("Avenir", Font.PLAIN, 14);
     public static final Font INSTRUCTIONS = new Font("Avenir", Font.PLAIN, 20);
     public static final Color BEHIND = new Color(216,213,219);
+    public static final Color ALTERNATE = new Color(176,215,255);
     
+    private JTextField otherField;
+    private JLabel aidLabel;
+    private JLabel generatorLabel;
+    private JLabel flashlightLabel;
+    private JLabel clothesLabel;
+    private JLabel waterLabel;
+    private JLabel foodLabel;
     private Neighborhood myN;
     private Person name;
     private JTextField clearSpace;
@@ -46,6 +54,7 @@ public class MainScreen extends JFrame implements ActionListener{
         
         JMenu supplies = new JMenu("emergency supplies");
         JMenuItem mySupplies = new JMenuItem("my supplies");
+        mySupplies.addActionListener(this);
         supplies.add(mySupplies);
         JMenuItem food = new JMenuItem("food");
         supplies.add(food);
@@ -110,6 +119,131 @@ public class MainScreen extends JFrame implements ActionListener{
             save.addActionListener(this);
             main.add(save, BorderLayout.SOUTH);
             add (main, BorderLayout.CENTER);
+        } else if (tab.equals("my supplies")){
+            JPanel main = new JPanel();
+            main.setLayout(new GridLayout(8,1));
+            
+            JPanel label = new JPanel();
+            JLabel labellabel = new JLabel("my supplies");
+            label.setBackground(BACKGROUND);
+            labellabel.setFont(INSTRUCTIONS);
+            labellabel.setForeground(TEXT);
+            label.add(labellabel);
+            main.add(label);
+            
+            JPanel foodPanel = new JPanel();
+            foodPanel.setBackground(ALTERNATE);
+            foodLabel = new JLabel("food: " + name.food);
+            foodLabel.setForeground(TEXT);
+            foodLabel.setFont(INSTRUCTIONS);
+            foodPanel.add(foodLabel);
+            JButton addFood = new JButton("+");
+            addFood.addActionListener(this);
+            addFood.setActionCommand("add food");
+            foodPanel.add(addFood);
+            JButton removeFood = new JButton("-");
+            removeFood.addActionListener(this);
+            removeFood.setActionCommand("remove food");
+            foodPanel.add(removeFood);
+            main.add(foodPanel);
+            
+            JPanel waterPanel = new JPanel();
+            waterPanel.setBackground(BEHIND);
+            waterLabel = new JLabel("water: " + name.food);
+            waterLabel.setForeground(TEXT);
+            waterLabel.setFont(INSTRUCTIONS);
+            waterPanel.add(waterLabel);
+            JButton addWater= new JButton("+");
+            addWater.addActionListener(this);
+            addWater.setActionCommand("add water");
+            waterPanel.add(addWater);
+            JButton removeWater = new JButton("-");
+            removeWater.addActionListener(this);
+            removeWater.setActionCommand("remove water");
+            waterPanel.add(removeWater);
+            main.add(waterPanel);
+            
+            JPanel aidPanel = new JPanel();
+            aidPanel.setBackground(ALTERNATE);
+            aidLabel = new JLabel("first aid: " + name.firstAid);
+            aidLabel.setForeground(TEXT);
+            aidLabel.setFont(INSTRUCTIONS);
+            aidPanel.add(aidLabel);
+            JButton addAid = new JButton("+");
+            addAid.addActionListener(this);
+            addAid.setActionCommand("add aid");
+            aidPanel.add(addAid);
+            JButton removeAid = new JButton("-");
+            removeAid.addActionListener(this);
+            removeAid.setActionCommand("remove aid");
+            aidPanel.add(removeAid);
+            main.add(aidPanel);
+            
+            JPanel generatorPanel = new JPanel();
+            generatorPanel.setBackground(BEHIND);
+            generatorLabel = new JLabel("generators: " + name.generators);
+            generatorLabel.setForeground(TEXT);
+            generatorLabel.setFont(INSTRUCTIONS);
+            generatorPanel.add(generatorLabel);
+            JButton addGenerator = new JButton("+");
+            addGenerator.addActionListener(this);
+            addGenerator.setActionCommand("add generator");
+            generatorPanel.add(addGenerator);
+            JButton removeGenerator = new JButton("-");
+            removeGenerator.addActionListener(this);
+            removeGenerator.setActionCommand("remove generator");
+            generatorPanel.add(removeGenerator);
+            main.add(generatorPanel);
+            
+            JPanel flashlightPanel = new JPanel();
+            flashlightPanel.setBackground(ALTERNATE);
+            flashlightLabel = new JLabel("flashlights: " + name.flashlights);
+            flashlightLabel.setForeground(TEXT);
+            flashlightLabel.setFont(INSTRUCTIONS);
+            flashlightPanel.add(flashlightLabel);
+            JButton addFlashlight = new JButton("+");
+            addFlashlight.addActionListener(this);
+            addFlashlight.setActionCommand("add flashlight");
+            flashlightPanel.add(addFlashlight);
+            JButton removeFlashlight = new JButton("-");
+            removeFlashlight.addActionListener(this);
+            removeFlashlight.setActionCommand("remove flashlight");
+            flashlightPanel.add(removeFlashlight);
+            main.add(flashlightPanel);
+            
+            JPanel clothesPanel = new JPanel();
+            clothesPanel.setBackground(BEHIND);
+            clothesLabel = new JLabel("clothes and blankets: " + name.clothes);
+            clothesLabel.setForeground(TEXT);
+            clothesLabel.setFont(INSTRUCTIONS);
+            clothesPanel.add(clothesLabel);
+            JButton addClothes = new JButton("+");
+            addClothes.addActionListener(this);
+            addClothes.setActionCommand("add clothes");
+            clothesPanel.add(addClothes);
+            JButton removeClothes = new JButton("-");
+            removeClothes.addActionListener(this);
+            removeClothes.setActionCommand("remove clothes");
+            clothesPanel.add(removeClothes);
+            main.add(clothesPanel);
+            
+            JPanel otherStuff = new JPanel();
+            otherStuff.setBackground(BACKGROUND);
+            JLabel otherLabel = new JLabel("other:");
+            otherLabel.setFont(INSTRUCTIONS);
+            otherLabel.setForeground(TEXT);
+            otherStuff.add(otherLabel);
+            otherField = new JTextField(15);
+            otherField.setFont(PLAN);
+            otherField.setForeground(TEXT);
+            otherField.setText(name.other);
+            otherStuff.add(otherField);
+            JButton save = new JButton("save");
+            save.addActionListener(this);
+            save.setActionCommand("save other");
+            otherStuff.add(save);
+            main.add(otherStuff);
+            add(main, BorderLayout.CENTER);
         }
     }
     public void actionPerformed(ActionEvent e){
@@ -120,6 +254,8 @@ public class MainScreen extends JFrame implements ActionListener{
                          break;
             case "save personal": name.plan = personal.getText();
                                   break;
+            case "save other": name.other = otherField.getText();
+                               break;
             case "neighborhood plan": MainScreen m = new MainScreen(myN, name, "neighborhood plan");
                                       m.setVisible(true);
                                       dispose();
@@ -128,8 +264,50 @@ public class MainScreen extends JFrame implements ActionListener{
                                       n.setVisible(true);
                                       dispose();
                                       break;
+            case "my supplies":     MainScreen o = new MainScreen(myN, name, "my supplies");
+                                      o.setVisible(true);
+                                      dispose();
+                                      break;
+            case "add food": name.food ++;
+                             foodLabel.setText("food: " + name.food);
+                             break;
+            case "remove food": name.food --;
+                             foodLabel.setText("food: " + name.food);
+                             break;
+            case "add water": name.water ++;
+                             waterLabel.setText("water: " + name.water);
+                             break;
+            case "remove water": name.water --;
+                             waterLabel.setText("water: " + name.water);
+                             break;                 
+            case "add generator": name.generators ++;
+                             generatorLabel.setText("generators: " + name.generators);
+                             break;
+            case "remove generator": name.generators --;
+                             generatorLabel.setText("generators: " + name.generators);
+                             break;
+            case "add aid": name.firstAid ++;
+                             aidLabel.setText("first aid: " + name.firstAid);
+                             break;
+            case "remove aid": name.firstAid --;
+                             aidLabel.setText("first aid: " + name.firstAid);
+                             break;                 
+            case "add flashlight": name.flashlights ++;
+                             flashlightLabel.setText("flashlights: " + name.flashlights);
+                             break;
+            case "remove flashlight": name.flashlights --;
+                             flashlightLabel.setText("flashlights: " + name.flashlights);
+                             break;                 
+            case "add clothes": name.clothes ++;
+                             clothesLabel.setText("clothes and blankets: " + name.clothes);
+                             break;
+            case "remove clothes": name.clothes --;
+                             clothesLabel.setText("clothes and blankets: " + name.clothes);
+                             break;                 
         }
+        
     }
     
     
 }
+
