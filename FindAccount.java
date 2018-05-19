@@ -12,6 +12,9 @@ package expohacksproject;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class FindAccount extends JFrame implements ActionListener{
     Neighborhood myNeighborhood;
@@ -140,6 +143,15 @@ public class FindAccount extends JFrame implements ActionListener{
             ExpoHacksProject.setNeighborhood(myNeighborhood);
             FindAccount f = new FindAccount(myNeighborhood);
             f.setVisible(true);
+            ObjectOutputStream output = null;
+            try{
+                output = new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                output.writeObject(ExpoHacksProject.neighborhoods);
+                output.close();
+            } catch (IOException g){
+                System.out.println("Output file not found.");
+                System.exit(0);
+            }
             dispose();
         } else {
             if (currentPerson == null){
