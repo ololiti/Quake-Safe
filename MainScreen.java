@@ -60,18 +60,25 @@ public class MainScreen extends JFrame implements ActionListener{
         mySupplies.addActionListener(this);
         supplies.add(mySupplies);
         JMenuItem food = new JMenuItem("food");
+        food.addActionListener(this);
         supplies.add(food);
         JMenuItem water = new JMenuItem("water");
+        water.addActionListener(this);
         supplies.add(water);
         JMenuItem firstAid = new JMenuItem("first aid");
+        firstAid.addActionListener(this);
         supplies.add(firstAid);
         JMenuItem generators = new JMenuItem("generators");
+        generators.addActionListener(this);
         supplies.add(generators);
         JMenuItem flashlights = new JMenuItem("flashlights");
+        flashlights.addActionListener(this);
         supplies.add(flashlights);
         JMenuItem clothes = new JMenuItem("clothes and blankets");
+        clothes.addActionListener(this);
         supplies.add(clothes);
         JMenuItem other = new JMenuItem("other");
+        other.addActionListener(this);
         supplies.add(other);
         
         JMenuBar bar = new JMenuBar();
@@ -247,6 +254,293 @@ public class MainScreen extends JFrame implements ActionListener{
             otherStuff.add(save);
             main.add(otherStuff);
             add(main, BorderLayout.CENTER);
+        } else if (tab.equals("food")){
+            JPanel main = new JPanel();
+            main.setBackground(BACKGROUND);
+            main.setLayout(new GridLayout(myN.getAllPeople().size() + 1,2));
+            
+            JPanel suppliesPanel = new JPanel();
+            supplies.setBackground(BACKGROUND);
+            JLabel suppliesLabel = new JLabel("supplies: ");
+            suppliesLabel.setFont(INSTRUCTIONS);
+            suppliesLabel.setForeground(TEXT);
+            suppliesPanel.add(suppliesLabel);
+            main.add(suppliesLabel);
+            
+            JPanel namePanel = new JPanel();
+            namePanel.setBackground(BACKGROUND);
+            JLabel typeLabel = new JLabel("food");
+            typeLabel.setFont(INSTRUCTIONS);
+            typeLabel.setForeground(TEXT);
+            namePanel.add(typeLabel);
+            main.add(namePanel);
+            
+            for (int i = 0; i < myN.getAllPeople().size(); i++){
+                JPanel j = new JPanel();
+                if (i%2 == 0) j.setBackground(ALTERNATE);
+                else j.setBackground(BEHIND);
+                JLabel jl = new JLabel(myN.getAllPeople().get(i).toString());
+                if (myN.getAllPeople().get(i).equals(name)) jl.setText("me");
+                jl.setFont(INSTRUCTIONS);
+                jl.setForeground(TEXT);
+                j.add(jl);
+                main.add(j);
+                JPanel j1 = new JPanel();
+                if (i%2 == 0) j1.setBackground(ALTERNATE);
+                else j1.setBackground(BEHIND);
+                JLabel jl1 = new JLabel(Integer.toString(myN.getAllPeople().get(i).food));
+                jl1.setFont(INSTRUCTIONS);
+                jl1.setForeground(TEXT);
+                j1.add(jl1);
+                main.add(j1);
+            }
+            add(main, BorderLayout.CENTER);
+        } else if (tab.equals("water")){
+            JPanel main = new JPanel();
+            main.setBackground(BACKGROUND);
+            main.setLayout(new GridLayout(myN.getAllPeople().size() + 1,2));
+            
+            JPanel suppliesPanel = new JPanel();
+            supplies.setBackground(BACKGROUND);
+            JLabel suppliesLabel = new JLabel("supplies: ");
+            suppliesLabel.setFont(INSTRUCTIONS);
+            suppliesLabel.setForeground(TEXT);
+            suppliesPanel.add(suppliesLabel);
+            main.add(suppliesLabel);
+            
+            JPanel namePanel = new JPanel();
+            namePanel.setBackground(BACKGROUND);
+            JLabel typeLabel = new JLabel("water");
+            typeLabel.setFont(INSTRUCTIONS);
+            typeLabel.setForeground(TEXT);
+            namePanel.add(typeLabel);
+            main.add(namePanel);
+            
+            for (int i = 0; i < myN.getAllPeople().size(); i++){
+                JPanel j = new JPanel();
+                if (i%2 == 0) j.setBackground(ALTERNATE);
+                else j.setBackground(BEHIND);
+                JLabel jl = new JLabel(myN.getAllPeople().get(i).toString());
+                if (myN.getAllPeople().get(i).equals(name)) jl.setText("me");
+                jl.setFont(INSTRUCTIONS);
+                jl.setForeground(TEXT);
+                j.add(jl);
+                main.add(j);
+                JPanel j1 = new JPanel();
+                if (i%2 == 0) j1.setBackground(ALTERNATE);
+                else j1.setBackground(BEHIND);
+                JLabel jl1 = new JLabel(Integer.toString(myN.getAllPeople().get(i).water));
+                jl1.setFont(INSTRUCTIONS);
+                jl1.setForeground(TEXT);
+                j1.add(jl1);
+                main.add(j1);
+            }
+            add(main, BorderLayout.CENTER);
+        } else if (tab.equals("first aid")){
+            JPanel main = new JPanel();
+            main.setBackground(BACKGROUND);
+            main.setLayout(new GridLayout(myN.getAllPeople().size() + 1,2));
+            
+            JPanel suppliesPanel = new JPanel();
+            supplies.setBackground(BACKGROUND);
+            JLabel suppliesLabel = new JLabel("supplies: ");
+            suppliesLabel.setFont(INSTRUCTIONS);
+            suppliesLabel.setForeground(TEXT);
+            suppliesPanel.add(suppliesLabel);
+            main.add(suppliesLabel);
+            
+            JPanel namePanel = new JPanel();
+            namePanel.setBackground(BACKGROUND);
+            JLabel typeLabel = new JLabel("first aid");
+            typeLabel.setFont(INSTRUCTIONS);
+            typeLabel.setForeground(TEXT);
+            namePanel.add(typeLabel);
+            main.add(namePanel);
+            
+            for (int i = 0; i < myN.getAllPeople().size(); i++){
+                JPanel j = new JPanel();
+                if (i%2 == 0) j.setBackground(ALTERNATE);
+                else j.setBackground(BEHIND);
+                JLabel jl = new JLabel(myN.getAllPeople().get(i).toString());
+                if (myN.getAllPeople().get(i).equals(name)) jl.setText("me");
+                jl.setFont(INSTRUCTIONS);
+                jl.setForeground(TEXT);
+                j.add(jl);
+                main.add(j);
+                JPanel j1 = new JPanel();
+                if (i%2 == 0) j1.setBackground(ALTERNATE);
+                else j1.setBackground(BEHIND);
+                JLabel jl1 = new JLabel(Integer.toString(myN.getAllPeople().get(i).firstAid));
+                jl1.setFont(INSTRUCTIONS);
+                jl1.setForeground(TEXT);
+                j1.add(jl1);
+                main.add(j1);
+            }
+            add(main, BorderLayout.CENTER);
+        } else if (tab.equals("generators")){
+            JPanel main = new JPanel();
+            main.setBackground(BACKGROUND);
+            main.setLayout(new GridLayout(myN.getAllPeople().size() + 1,2));
+            
+            JPanel suppliesPanel = new JPanel();
+            supplies.setBackground(BACKGROUND);
+            JLabel suppliesLabel = new JLabel("supplies: ");
+            suppliesLabel.setFont(INSTRUCTIONS);
+            suppliesLabel.setForeground(TEXT);
+            suppliesPanel.add(suppliesLabel);
+            main.add(suppliesLabel);
+            
+            JPanel namePanel = new JPanel();
+            namePanel.setBackground(BACKGROUND);
+            JLabel typeLabel = new JLabel("generators");
+            typeLabel.setFont(INSTRUCTIONS);
+            typeLabel.setForeground(TEXT);
+            namePanel.add(typeLabel);
+            main.add(namePanel);
+            
+            for (int i = 0; i < myN.getAllPeople().size(); i++){
+                JPanel j = new JPanel();
+                if (i%2 == 0) j.setBackground(ALTERNATE);
+                else j.setBackground(BEHIND);
+                JLabel jl = new JLabel(myN.getAllPeople().get(i).toString());
+                if (myN.getAllPeople().get(i).equals(name)) jl.setText("me");
+                jl.setFont(INSTRUCTIONS);
+                jl.setForeground(TEXT);
+                j.add(jl);
+                main.add(j);
+                JPanel j1 = new JPanel();
+                if (i%2 == 0) j1.setBackground(ALTERNATE);
+                else j1.setBackground(BEHIND);
+                JLabel jl1 = new JLabel(Integer.toString(myN.getAllPeople().get(i).generators));
+                jl1.setFont(INSTRUCTIONS);
+                jl1.setForeground(TEXT);
+                j1.add(jl1);
+                main.add(j1);
+            }
+            add(main, BorderLayout.CENTER);
+        } else if (tab.equals("flashlights")){
+            JPanel main = new JPanel();
+            main.setBackground(BACKGROUND);
+            main.setLayout(new GridLayout(myN.getAllPeople().size() + 1,2));
+            
+            JPanel suppliesPanel = new JPanel();
+            supplies.setBackground(BACKGROUND);
+            JLabel suppliesLabel = new JLabel("supplies: ");
+            suppliesLabel.setFont(INSTRUCTIONS);
+            suppliesLabel.setForeground(TEXT);
+            suppliesPanel.add(suppliesLabel);
+            main.add(suppliesLabel);
+            
+            JPanel namePanel = new JPanel();
+            namePanel.setBackground(BACKGROUND);
+            JLabel typeLabel = new JLabel("flashlights");
+            typeLabel.setFont(INSTRUCTIONS);
+            typeLabel.setForeground(TEXT);
+            namePanel.add(typeLabel);
+            main.add(namePanel);
+            
+            for (int i = 0; i < myN.getAllPeople().size(); i++){
+                JPanel j = new JPanel();
+                if (i%2 == 0) j.setBackground(ALTERNATE);
+                else j.setBackground(BEHIND);
+                JLabel jl = new JLabel(myN.getAllPeople().get(i).toString());
+                if (myN.getAllPeople().get(i).equals(name)) jl.setText("me");
+                jl.setFont(INSTRUCTIONS);
+                jl.setForeground(TEXT);
+                j.add(jl);
+                main.add(j);
+                JPanel j1 = new JPanel();
+                if (i%2 == 0) j1.setBackground(ALTERNATE);
+                else j1.setBackground(BEHIND);
+                JLabel jl1 = new JLabel(Integer.toString(myN.getAllPeople().get(i).flashlights));
+                jl1.setFont(INSTRUCTIONS);
+                jl1.setForeground(TEXT);
+                j1.add(jl1);
+                main.add(j1);
+            }
+            add(main, BorderLayout.CENTER);
+        } else if (tab.equals("clothes and blankets")){
+            JPanel main = new JPanel();
+            main.setBackground(BACKGROUND);
+            main.setLayout(new GridLayout(myN.getAllPeople().size() + 1,2));
+            
+            JPanel suppliesPanel = new JPanel();
+            supplies.setBackground(BACKGROUND);
+            JLabel suppliesLabel = new JLabel("supplies: ");
+            suppliesLabel.setFont(INSTRUCTIONS);
+            suppliesLabel.setForeground(TEXT);
+            suppliesPanel.add(suppliesLabel);
+            main.add(suppliesLabel);
+            
+            JPanel namePanel = new JPanel();
+            namePanel.setBackground(BACKGROUND);
+            JLabel typeLabel = new JLabel("clothes and blankets");
+            typeLabel.setFont(INSTRUCTIONS);
+            typeLabel.setForeground(TEXT);
+            namePanel.add(typeLabel);
+            main.add(namePanel);
+            
+            for (int i = 0; i < myN.getAllPeople().size(); i++){
+                JPanel j = new JPanel();
+                if (i%2 == 0) j.setBackground(ALTERNATE);
+                else j.setBackground(BEHIND);
+                JLabel jl = new JLabel(myN.getAllPeople().get(i).toString());
+                if (myN.getAllPeople().get(i).equals(name)) jl.setText("me");
+                jl.setFont(INSTRUCTIONS);
+                jl.setForeground(TEXT);
+                j.add(jl);
+                main.add(j);
+                JPanel j1 = new JPanel();
+                if (i%2 == 0) j1.setBackground(ALTERNATE);
+                else j1.setBackground(BEHIND);
+                JLabel jl1 = new JLabel(Integer.toString(myN.getAllPeople().get(i).clothes));
+                jl1.setFont(INSTRUCTIONS);
+                jl1.setForeground(TEXT);
+                j1.add(jl1);
+                main.add(j1);
+            }
+            add(main, BorderLayout.CENTER);
+        } else if (tab.equals("other")){
+            JPanel main = new JPanel();
+            main.setBackground(BACKGROUND);
+            main.setLayout(new GridLayout(myN.getAllPeople().size() + 1,2));
+            
+            JPanel suppliesPanel = new JPanel();
+            supplies.setBackground(BACKGROUND);
+            JLabel suppliesLabel = new JLabel("supplies: ");
+            suppliesLabel.setFont(INSTRUCTIONS);
+            suppliesLabel.setForeground(TEXT);
+            suppliesPanel.add(suppliesLabel);
+            main.add(suppliesLabel);
+            
+            JPanel namePanel = new JPanel();
+            namePanel.setBackground(BACKGROUND);
+            JLabel typeLabel = new JLabel("other");
+            typeLabel.setFont(INSTRUCTIONS);
+            typeLabel.setForeground(TEXT);
+            namePanel.add(typeLabel);
+            main.add(namePanel);
+            
+            for (int i = 0; i < myN.getAllPeople().size(); i++){
+                JPanel j = new JPanel();
+                if (i%2 == 0) j.setBackground(ALTERNATE);
+                else j.setBackground(BEHIND);
+                JLabel jl = new JLabel(myN.getAllPeople().get(i).toString());
+                if (myN.getAllPeople().get(i).equals(name)) jl.setText("me");
+                jl.setFont(INSTRUCTIONS);
+                jl.setForeground(TEXT);
+                j.add(jl);
+                main.add(j);
+                JPanel j1 = new JPanel();
+                if (i%2 == 0) j1.setBackground(ALTERNATE);
+                else j1.setBackground(BEHIND);
+                JLabel jl1 = new JLabel(myN.getAllPeople().get(i).other);
+                jl1.setFont(INSTRUCTIONS);
+                jl1.setForeground(TEXT);
+                j1.add(jl1);
+                main.add(j1);
+            }
+            add(main, BorderLayout.CENTER);
         }
     }
     public void actionPerformed(ActionEvent e){
@@ -325,6 +619,97 @@ public class MainScreen extends JFrame implements ActionListener{
                                     }
                                       dispose();
                                       break;
+            case "food": MainScreen p = new MainScreen(myN, name, "food");
+                                      p.setVisible(true);
+                                      ObjectOutputStream output6 = null;
+                                    try{
+                                        output6 = new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                                        output6.writeObject(ExpoHacksProject.neighborhoods);
+                                        output6.close();
+                                    } catch (IOException g){
+                                        System.out.println("Output file not found.");
+                                        System.exit(0);
+                                    }
+                                      dispose();
+                                      break; 
+            case "water": MainScreen q = new MainScreen(myN, name, "water");
+                                      q.setVisible(true);
+                                      ObjectOutputStream output7 = null;
+                                    try{
+                                        output7 = new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                                        output7.writeObject(ExpoHacksProject.neighborhoods);
+                                        output7.close();
+                                    } catch (IOException g){
+                                        System.out.println("Output file not found.");
+                                        System.exit(0);
+                                    }
+                                      dispose();
+                                      break; 
+            case "generators": MainScreen r = new MainScreen(myN, name, "generators");
+                                      r.setVisible(true);
+                                      ObjectOutputStream output8 = null;
+                                    try{
+                                        output8= new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                                        output8.writeObject(ExpoHacksProject.neighborhoods);
+                                        output8.close();
+                                    } catch (IOException g){
+                                        System.out.println("Output file not found.");
+                                        System.exit(0);
+                                    }
+                                      dispose();
+                                      break; 
+            case "first aid": MainScreen s = new MainScreen(myN, name, "first aid");
+                                      s.setVisible(true);
+                                      ObjectOutputStream output9 = null;
+                                    try{
+                                        output9 = new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                                        output9.writeObject(ExpoHacksProject.neighborhoods);
+                                        output9.close();
+                                    } catch (IOException g){
+                                        System.out.println("Output file not found.");
+                                        System.exit(0);
+                                    }
+                                      dispose();
+                                      break; 
+            case "clothes and blankets": MainScreen t = new MainScreen(myN, name, "clothes and blankets");
+                                      t.setVisible(true);
+                                      ObjectOutputStream output10 = null;
+                                    try{
+                                        output10 = new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                                        output10.writeObject(ExpoHacksProject.neighborhoods);
+                                        output10.close();
+                                    } catch (IOException g){
+                                        System.out.println("Output file not found.");
+                                        System.exit(0);
+                                    }
+                                      dispose();
+                                      break;  
+            case "flashlights": MainScreen u = new MainScreen(myN, name, "flashlights");
+                                      u.setVisible(true);
+                                      ObjectOutputStream output11 = null;
+                                    try{
+                                        output11 = new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                                        output11.writeObject(ExpoHacksProject.neighborhoods);
+                                        output11.close();
+                                    } catch (IOException g){
+                                        System.out.println("Output file not found.");
+                                        System.exit(0);
+                                    }
+                                      dispose();
+                                      break;  
+            case "other": MainScreen v = new MainScreen(myN, name, "other");
+                                      v.setVisible(true);
+                                      ObjectOutputStream output12 = null;
+                                    try{
+                                        output12 = new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                                        output12.writeObject(ExpoHacksProject.neighborhoods);
+                                        output12.close();
+                                    } catch (IOException g){
+                                        System.out.println("Output file not found.");
+                                        System.exit(0);
+                                    }
+                                      dispose();
+                                      break; 
             case "add food": name.food ++;
                              foodLabel.setText("food: " + name.food);
                              break;
