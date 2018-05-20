@@ -9,7 +9,8 @@ package expohacksproject;
  * @author Aditi
  */
 import java.util.ArrayList;
-public class Person {
+import java.io.*;
+public class Person implements Serializable{
     String name;
     String plan = "DROP, COVER, and HOLD ON to strong furniture!"
             + "\nIf you are in bed, hold on and cover your head."
