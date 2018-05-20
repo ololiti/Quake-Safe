@@ -11,6 +11,9 @@ package expohacksproject;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import javax.swing.event.*;
 public class MainScreen extends JFrame implements ActionListener{
     public static final int WIDTH = 700;
@@ -251,21 +254,75 @@ public class MainScreen extends JFrame implements ActionListener{
         switch (message){
             case "save": myN.plan[0] = clearSpace.getText();
                          myN.plan[1] = badSpace.getText();
+                         ObjectOutputStream output = null;
+                        try{
+                            output = new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                            output.writeObject(ExpoHacksProject.neighborhoods);
+                            output.close();
+                        } catch (IOException g){
+                            System.out.println("Output file not found.");
+                            System.exit(0);
+                        }
                          break;
             case "save personal": name.plan = personal.getText();
+                                  ObjectOutputStream output2 = null;
+                                try{
+                                    output2 = new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                                    output2.writeObject(ExpoHacksProject.neighborhoods);
+                                    output2.close();
+                                } catch (IOException g){
+                                    System.out.println("Output file not found.");
+                                    System.exit(0);
+                                }
                                   break;
             case "save other": name.other = otherField.getText();
+                               ObjectOutputStream output1 = null;
+                                try{
+                                    output1 = new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                                    output1.writeObject(ExpoHacksProject.neighborhoods);
+                                    output1.close();
+                                } catch (IOException g){
+                                    System.out.println("Output file not found.");
+                                    System.exit(0);
+                                }
                                break;
             case "neighborhood plan": MainScreen m = new MainScreen(myN, name, "neighborhood plan");
                                       m.setVisible(true);
+                                      ObjectOutputStream output3 = null;
+                                        try{
+                                            output3 = new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                                            output3.writeObject(ExpoHacksProject.neighborhoods);
+                                            output3.close();
+                                        } catch (IOException g){
+                                            System.out.println("Output file not found.");
+                                            System.exit(0);
+                                        }
                                       dispose();
                                       break;
             case "personal plan":     MainScreen n = new MainScreen(myN, name, "personal plan");
                                       n.setVisible(true);
+                                      ObjectOutputStream output4 = null;
+                                    try{
+                                        output4 = new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                                        output4.writeObject(ExpoHacksProject.neighborhoods);
+                                        output4.close();
+                                    } catch (IOException g){
+                                        System.out.println("Output file not found.");
+                                        System.exit(0);
+                                    }
                                       dispose();
                                       break;
             case "my supplies":     MainScreen o = new MainScreen(myN, name, "my supplies");
                                       o.setVisible(true);
+                                      ObjectOutputStream output5 = null;
+                                    try{
+                                        output5 = new ObjectOutputStream(new FileOutputStream("accounts.bin"));
+                                        output5.writeObject(ExpoHacksProject.neighborhoods);
+                                        output5.close();
+                                    } catch (IOException g){
+                                        System.out.println("Output file not found.");
+                                        System.exit(0);
+                                    }
                                       dispose();
                                       break;
             case "add food": name.food ++;
@@ -310,4 +367,3 @@ public class MainScreen extends JFrame implements ActionListener{
     
     
 }
-
